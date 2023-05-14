@@ -17,6 +17,17 @@ RUN cd /app && \
 /usr/local/bin/composer install --no-dev
 
 
+# MySQL setup
+RUN apt-get update && \
+    apt-get install -y mysql-server && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    service mysql start && \
+    mysql -e "CREATE DATABASE designs;" && \
+    mysql -e "CREATE USER 'root'@'%' IDENTIFIED BY '';" && \
+    mysql -e "GRANT ALL PRIVILEGES ON designs.* TO 'root'@'%';" && \
+    mysql -e "FLUSH PRIVILEGES;"
+
 
 RUN chown -R www-data: /app
 
