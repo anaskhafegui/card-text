@@ -8,7 +8,7 @@ RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar 
 RUN cd /app && \
 /usr/local/bin/composer install --no-dev
 
-RUN apk add --no-cache nginx wget npm mysql-client mysql-dev
+RUN apk add --no-cache nginx wget mysql-client mysql-dev
 
 RUN chown -R www-data: /app
 

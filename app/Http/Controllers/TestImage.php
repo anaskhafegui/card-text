@@ -23,7 +23,7 @@ class TestImage extends Controller
         $Arabic = new \I18N_Arabic('Glyphs');
         $text = $Arabic->utf8Glyphs($text);
         $text = mb_convert_encoding($text, 'UTF-8');
-        $image->text($text, 2250, 4000, function($font) {
+        $image->text($text, $design->x_axis, $design->y_axis, function($font) {
             $font->file(public_path('fonts/Greta-Arabic-AR-LT-Heavy.ttf'));
             $font->size(200);
             $font->color('#788c71');
